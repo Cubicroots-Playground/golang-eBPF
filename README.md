@@ -12,7 +12,7 @@ sudo ln -s /usr/include/x86_64-linux-gnu/asm /usr/include/asm
 
 ## Run
 
-## packetcounter
+### packetcounter
 
 ```
 cd packetcounter
@@ -24,7 +24,7 @@ Packet counter counts network packets on an interface.
 go generate && go build && sudo ./ebpf-test
 ```
 
-## kprobe
+### kprobe
 
 ```
 cd kprobe
