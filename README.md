@@ -12,14 +12,33 @@ sudo ln -s /usr/include/x86_64-linux-gnu/asm /usr/include/asm
 
 ## Run
 
-Packet counter
+## packetcounter
 
 ```
-cd packetcounter && go generate && go build && sudo ./ebpf-test
+cd packetcounter
 ```
 
-Kprobe
+Packet counter counts network packets on an interface.
 
 ```
-cd kprobe && bpftool btf dump file /sys/kernel/btf/vmlinux format c > vmlinux.h && go generate && go build && sudo ./ebpf-test
+go generate && go build && sudo ./ebpf-test
+```
+
+## kprobe
+
+```
+cd kprobe
+```
+
+Kprobe attaches to the `sys_execve` symbol and reports the executed programs.
+
+Run once:
+
+```
+bpftool btf dump file /sys/kernel/btf/vmlinux format c > vmlinux.h
+```
+
+
+```
+go generate && go build && sudo ./ebpf-test
 ```
