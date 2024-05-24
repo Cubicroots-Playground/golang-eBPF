@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/binary"
 	"log"
 	"os"
 	"os/signal"
@@ -51,7 +52,7 @@ func main() {
 			if err != nil {
 				log.Fatal("reader read:", err)
 			}
-			log.Printf("sys_execve: %s\n", string(obj.RawSample[4:]))
+			log.Printf("sys_execve called with\npid: %d\nexecutable name: %s\n\n", binary.LittleEndian.Uint32(obj.RawSample[:4]), string(obj.RawSample[4:]))
 		case <-stop:
 			log.Print("Received signal, exiting..")
 			return
